@@ -71,7 +71,6 @@ public class ProdutoService {
 		if (pagedQueryDto.getRowsPerPage() == 0) {
 			List<Produto> list = null;
 			Sort sort = pagedQueryDto.getSort();
-
 			if (sort == null) {
 				list = produtoDao.findAll(ProdutoSpecification.search(pagedQueryDto.getFilter()));
 			}
@@ -84,7 +83,6 @@ public class ProdutoService {
 			return produtoDao.findAll(ProdutoSpecification.search(pagedQueryDto.getFilter()), pagedQueryDto.getPageRequest());
 		}
 	}
-
 
 	/*public Produto fromDTO(ProdutoDTO objDto) {
 		return new Produto(objDto.getId(), objDto.getCodigoProduto(), objDto.getDescricaoProduto());

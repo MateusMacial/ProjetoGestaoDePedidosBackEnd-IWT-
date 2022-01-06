@@ -14,7 +14,7 @@ public class PedidoDTO {
 	private long id;
 	private String codigoPedido;
 	private String cliente;
-	//private LocalDate dataEntrega;
+	private LocalDate dataEntrega;
 	private String observacao;
 
 	private List<ProdutoPedidoDTO> produtosDoPedido;

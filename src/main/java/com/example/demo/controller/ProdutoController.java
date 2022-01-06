@@ -45,16 +45,16 @@ public class ProdutoController {
 		return ResponseEntity.noContent().build();
 	}
 
-	@RequestMapping(value="/get-page",method=RequestMethod.GET)
+	/*@RequestMapping(value="/get-page",method=RequestMethod.GET)
 	public List<ProdutoDTO> findAll() {
 		ModelMapper modelMapper = new ModelMapper();
 		List<Produto> list = produtoService.findAll();
 		return list.stream()
 				.map(obj -> modelMapper.map(obj, ProdutoDTO.class))
 				.collect(Collectors.toList());
-	}
+	}*/
 
-	@RequestMapping(value = "get-page", method = RequestMethod.POST)
+	@RequestMapping(value = "/get-page", method = RequestMethod.POST)
 	public PagedQueryDto getPageProdutos(@RequestBody PagedQueryDto pagedQueryDto) {
 		Page<Produto> page =produtoService.getPage(pagedQueryDto);
 		ModelMapper modelMapper = new ModelMapper();

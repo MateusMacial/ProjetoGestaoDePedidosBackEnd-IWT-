@@ -21,7 +21,7 @@ public class Pedido extends AbstractEntity {
 
 	private String codigoPedido;
 	private String cliente;
-	//private LocalDate dataEntrega;
+	private LocalDate dataEntrega;
 	private String observacao;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", orphanRemoval = true)

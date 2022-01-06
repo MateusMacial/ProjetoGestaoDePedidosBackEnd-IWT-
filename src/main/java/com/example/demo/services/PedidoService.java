@@ -59,7 +59,7 @@ public class PedidoService {
 
 		pedido.setCodigoPedido(pedidoDto.getCodigoPedido());
 		pedido.setCliente(pedidoDto.getCliente());
-		// pedido.setDataEntrega(pedidoDto.getDataEntrega());
+		pedido.setDataEntrega(pedidoDto.getDataEntrega());
 		pedido.setObservacao(pedidoDto.getObservacao());
 
 		if(pedido.getProdutosDoPedido() == null) {
