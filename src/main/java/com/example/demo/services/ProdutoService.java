@@ -63,9 +63,9 @@ public class ProdutoService {
 		}
 	}
 
-	public List<Produto> findAll(){
+	/*public List<Produto> findAll(){
 		return produtoDao.findAll();
-	}
+	}*/
 
 	public Page<Produto> getPage(PagedQueryDto pagedQueryDto) {
 		if (pagedQueryDto.getRowsPerPage() == 0) {

@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -21,7 +20,7 @@ public class Pedido extends AbstractEntity {
 
 	private String codigoPedido;
 	private String cliente;
-	private LocalDate dataEntrega;
+	private Date dataEntrega;
 	private String observacao;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pedido", orphanRemoval = true)

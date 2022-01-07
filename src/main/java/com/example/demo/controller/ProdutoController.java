@@ -45,7 +45,7 @@ public class ProdutoController {
 		return ResponseEntity.noContent().build();
 	}
 
-	/*@RequestMapping(value="/get-page",method=RequestMethod.GET)
+	/*@RequestMapping(value="/get-all",method=RequestMethod.GET)
 	public List<ProdutoDTO> findAll() {
 		ModelMapper modelMapper = new ModelMapper();
 		List<Produto> list = produtoService.findAll();
@@ -56,7 +56,7 @@ public class ProdutoController {
 
 	@RequestMapping(value = "/get-page", method = RequestMethod.POST)
 	public PagedQueryDto getPageProdutos(@RequestBody PagedQueryDto pagedQueryDto) {
-		Page<Produto> page =produtoService.getPage(pagedQueryDto);
+		Page<Produto> page = produtoService.getPage(pagedQueryDto);
 		ModelMapper modelMapper = new ModelMapper();
 		pagedQueryDto.setList(page.getContent().stream().map(a -> modelMapper.map(a, ProdutoDTO.class)).collect(Collectors.toList()));
 		pagedQueryDto.setRowsNumber(page.getTotalElements());

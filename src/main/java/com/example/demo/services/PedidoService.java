@@ -3,12 +3,18 @@ package com.example.demo.services;
 import com.example.demo.dao.PedidoDao;
 import com.example.demo.dao.ProdutoDao;
 import com.example.demo.dao.ProdutoPedidoDao;
+import com.example.demo.dao.specifications.PedidoSpecification;
+import com.example.demo.dao.specifications.ProdutoSpecification;
+import com.example.demo.dto.PagedQueryDto;
 import com.example.demo.dto.PedidoDTO;
 import com.example.demo.dto.ProdutoPedidoDTO;
 import com.example.demo.entidades.Pedido;
 import com.example.demo.entidades.Produto;
 import com.example.demo.entidades.ProdutoPedido;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -110,6 +116,23 @@ public class PedidoService {
 
 	public List<Pedido> findAll(){
 		return pedidoDao.findAll();
+	}
+
+	public Page<Pedido> getPage(PagedQueryDto pagedQueryDto) {
+		if (pagedQueryDto.getRowsPerPage() == 0) {
+			List<Pedido> list = null;
+			Sort sort = pagedQueryDto.getSort();
+			if (sort == null) {
+				list = pedidoDao.findAll(PedidoSpecification.search(pagedQueryDto.getFilter()));
+			}
+			else {
+				list = pedidoDao.findAll(PedidoSpecification.search(pagedQueryDto.getFilter()), sort);
+			}
+			return new PageImpl<>(list);
+		}
+		else {
+			return pedidoDao.findAll(PedidoSpecification.search(pagedQueryDto.getFilter()), pagedQueryDto.getPageRequest());
+		}
 	}
 
 	/*public Pedido fromDTO(PedidoDTO objDto) {
