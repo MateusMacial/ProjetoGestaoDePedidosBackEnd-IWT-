@@ -95,12 +95,6 @@ public class PedidoService {
 		return pedidoDao.save(pedido);
 	}
 
-	/*public Pedido update(Pedido obj) {
-		Pedido newObj = find(obj.getId());
-		updateData(newObj, obj);
-		return pedidoDao.save(newObj);
-	}*/
-
 	public void delete(List<Long> idsPedidosParaDeletar) {
 		for (long pedidoId: idsPedidosParaDeletar
 			 ) {
@@ -108,11 +102,6 @@ public class PedidoService {
 			pedidoDao.deleteById(pedidoId);
 		}
 	}
-
-	/*public void insertProduto(Pedido pedido, Produto produtoInserir) {
-		pedido.adicionarProduto(produtoInserir);
-		produtoInserir.setPedido(pedido);
-	}*/
 
 	public List<Pedido> findAll(){
 		return pedidoDao.findAll();
@@ -134,26 +123,4 @@ public class PedidoService {
 			return pedidoDao.findAll(PedidoSpecification.search(pagedQueryDto.getFilter()), pagedQueryDto.getPageRequest());
 		}
 	}
-
-	/*public Pedido fromDTO(PedidoDTO objDto) {
-		return new Pedido(objDto.getId(), objDto.getCodigoPedido(), objDto.getCliente(), objDto.getDataEntrega(), objDto.getObservacao());
-	}*/
-
-	/*private void updateData(Pedido newObj, Pedido obj) {
-		newObj.setCodigoPedido(obj.getCodigoPedido());
-		newObj.setCliente(obj.getCliente());
-		newObj.setDataEntrega(obj.getDataEntrega());
-		newObj.setObservacao(obj.getObservacao());
-
-		for (Produto produto : newObj.getProdutosDoPedido()) {
-			produto.setPedido(null);
-		}
-
-		newObj.getProdutosDoPedido().clear();
-
-		for (Produto produto : obj.getProdutosDoPedido()) {
-			produto.setPedido(newObj);
-			newObj.adicionarProduto(produto);
-		}
-	}*/
 }

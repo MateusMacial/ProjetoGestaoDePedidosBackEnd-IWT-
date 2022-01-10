@@ -1,7 +1,6 @@
 package com.example.demo.dao.specifications;
 
 import com.example.demo.entidades.Pedido;
-import com.example.demo.entidades.Produto;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.jpa.domain.Specification;
 

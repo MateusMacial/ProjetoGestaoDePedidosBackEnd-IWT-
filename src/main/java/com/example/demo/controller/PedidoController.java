@@ -39,17 +39,6 @@ public class PedidoController {
 		pedidoService.save(pedidoDto);
 	}
 
-	/*@RequestMapping(value="/update", method=RequestMethod.POST)
-	public ResponseEntity<Void> update(@Valid @RequestBody PedidoDTO objDto){
-		Pedido pedido = pedidoService.fromDTO(objDto);
-		for (ProdutoDTO produtoDto : objDto.getProdutosDoPedido()) {
-			Produto produto = produtoService.find(produtoDto.getId());
-			pedidoService.insertProduto(pedido, produto);
-		}
-		pedido = pedidoService.update(pedido);
-		return ResponseEntity.noContent().build();
-	}*/
-
 	@RequestMapping(value="/delete", method = RequestMethod.POST)
 	public ResponseEntity<Void> delete(@RequestBody PedidosParaDeletarDTO pedidosParaDeletarDTO){
 		pedidoService.delete(pedidosParaDeletarDTO.getIdsPedidosParaDeletar());

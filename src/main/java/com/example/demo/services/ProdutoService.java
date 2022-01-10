@@ -49,12 +49,6 @@ public class ProdutoService {
 		return produtoDao.save(produto);
 	}
 
-	/*public Produto update(Produto obj) {
-		Produto newObj = find(obj.getId());
-		updateData(newObj, obj);
-		return produtoDao.save(newObj);
-	}*/
-
 	public void delete(List<Long> idsProdutosParaDeletar) {
 		for (long produtoId : idsProdutosParaDeletar
 			 ) {
@@ -62,10 +56,6 @@ public class ProdutoService {
 			produtoDao.deleteById(produtoId);
 		}
 	}
-
-	/*public List<Produto> findAll(){
-		return produtoDao.findAll();
-	}*/
 
 	public Page<Produto> getPage(PagedQueryDto pagedQueryDto) {
 		if (pagedQueryDto.getRowsPerPage() == 0) {
@@ -83,13 +73,4 @@ public class ProdutoService {
 			return produtoDao.findAll(ProdutoSpecification.search(pagedQueryDto.getFilter()), pagedQueryDto.getPageRequest());
 		}
 	}
-
-	/*public Produto fromDTO(ProdutoDTO objDto) {
-		return new Produto(objDto.getId(), objDto.getCodigoProduto(), objDto.getDescricaoProduto());
-	}*/
-
-	/*private void updateData(Produto newObj, Produto obj) {
-		newObj.setCodigoProduto(obj.getCodigoProduto());
-		newObj.setDescricaoProduto(obj.getDescricaoProduto());
-	}*/
 }

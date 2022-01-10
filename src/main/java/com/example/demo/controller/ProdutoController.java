@@ -32,27 +32,11 @@ public class ProdutoController {
 		produtoService.save(produtoDto);
 	}
 
-	/*@RequestMapping(value="/update", method=RequestMethod.POST)
-	public ResponseEntity<Void> update(@Valid @RequestBody ProdutoDTO objDto){
-		Produto obj = produtoService.fromDTO(objDto);
-		obj = produtoService.update(obj);
-		return ResponseEntity.noContent().build();
-	}*/
-
 	@RequestMapping(value="/delete", method = RequestMethod.POST)
 	public ResponseEntity<Void> delete(@RequestBody ProdutosParaDeletarDTO produtosParaDeletarDTO){
 		produtoService.delete(produtosParaDeletarDTO.getIdsProdutosParaDeletar());
 		return ResponseEntity.noContent().build();
 	}
-
-	/*@RequestMapping(value="/get-all",method=RequestMethod.GET)
-	public List<ProdutoDTO> findAll() {
-		ModelMapper modelMapper = new ModelMapper();
-		List<Produto> list = produtoService.findAll();
-		return list.stream()
-				.map(obj -> modelMapper.map(obj, ProdutoDTO.class))
-				.collect(Collectors.toList());
-	}*/
 
 	@RequestMapping(value = "/get-page", method = RequestMethod.POST)
 	public PagedQueryDto getPageProdutos(@RequestBody PagedQueryDto pagedQueryDto) {
